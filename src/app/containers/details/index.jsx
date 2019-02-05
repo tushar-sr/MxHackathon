@@ -21,7 +21,7 @@ class Details extends Component {
       selectedEmojis: []
     }
     this.player = null
-    autobind(this, 'onEmojiClick', 'setEmoji', 'playerReady', 'handleChartClick')
+    autobind(this, 'onEmojiClick', 'setEmoji', 'playerReady', 'handleChartClick', 'onTimeUpdate')
   }
 
   onEmojiClick(e){
@@ -57,6 +57,13 @@ class Details extends Component {
     this.player && this.player.currentTime(time)
   }
 
+  onTimeUpdate(time){
+    const emojis = this.player && this.player.currentTime()
+    this.setState({
+      selectedEmojis : emojis
+    })
+  }
+
   playerReady(player){
     this.player = player
   }
@@ -69,7 +76,7 @@ class Details extends Component {
     })
     return (
       <div class='details'>
-          <Player playerReady={this.playerReady} />
+          <Player playerReady={this.playerReady} onTimeUpdate={this.onTimeUpdate} />
           <div className={showEmoji ? "react react-open" : "react"} onClick={this.onEmojiClick} > {elem} </div>
           {selectedEmojis && selectedEmojis.length > 0 &&
             <Animator emojis={selectedEmojis} />

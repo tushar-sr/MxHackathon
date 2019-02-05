@@ -35,6 +35,11 @@ export default class Player extends Component {
     this.props.playerReady(player)
   }
   render () {
+    const update = {
+      type: "recurring",
+      interval: 1,
+      update: this.props.onTimeUpdate
+    }
     var self = this
     var schedule = []
    
@@ -83,6 +88,7 @@ export default class Player extends Component {
           }}
           streams={stream}
           mobile={true}
+          history={update}
           akaMaiObj={akaMaiObj}
           loadAkamaiSdk={true}
           onHeartbeat={() => {
@@ -99,4 +105,3 @@ export default class Player extends Component {
     )
   }
 }
-
