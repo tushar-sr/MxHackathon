@@ -60,7 +60,6 @@ class ActivityGraph extends Component {
           }
         }
       };
-      debugger
       this.chart.draw(this.data, options);
     }
   }

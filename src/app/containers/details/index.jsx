@@ -21,7 +21,7 @@ class Details extends Component {
       selectedEmojis: []
     }
     this.player = null
-    autobind(this, 'onEmojiClick', 'setEmoji', 'playerReady')
+    autobind(this, 'onEmojiClick', 'setEmoji', 'playerReady', 'handleChartClick')
   }
 
   onEmojiClick(e){
@@ -53,6 +53,10 @@ class Details extends Component {
     }
   }
 
+  handleChartClick(time){
+    this.player && this.player.currentTime(time)
+  }
+
   playerReady(player){
     this.player = player
   }
@@ -71,7 +75,7 @@ class Details extends Component {
             <Animator emojis={selectedEmojis} />
           }
 
-          <ActivityGraph duration={details.duration} />
+          <ActivityGraph duration={details.duration} handleChartClick = {this.handleChartClick} />
       </div>
     )
   }
