@@ -6,10 +6,11 @@ let data = {
             duration: 808
         },
         "emojis": {
-            "1": "/images/Angry.webp",
-            "2": "/images/Clap.webp",
-            "3": "/images/Fuck.webp",
-            "4": "/images/Happy.webp"
+            "1": "/images/abuse.gif",
+            "2": "/images/angry.gif",
+            "3": "/images/clap.gif",
+            "4": "/images/monkey.gif",
+            "5": "/images/poop.gif"
         }
     }
 }
