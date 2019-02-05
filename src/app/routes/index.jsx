@@ -86,7 +86,7 @@ export default (store, client) => {
       />
       <Route
         exact
-        path="/detail/:id"
+        path="/details/:id"
         getComponent={(routingParams, callback) => {
           require.ensure([], component => {
             startComponent(require('../containers/details'), store, callback, routingParams)

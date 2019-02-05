@@ -31,8 +31,8 @@ export default class Player extends Component {
   onPlayButtonClick(){
     console.log("Play button clicked")
   }
-  playerReady(){
-    return false
+  playerReady(player){
+    this.props.playerReady(player)
   }
   render () {
     var self = this

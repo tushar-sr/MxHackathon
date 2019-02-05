@@ -3,6 +3,8 @@ import { h, render, Component } from 'preact'
 import Animator from './animator'
 import Player from './player'
 
+import {addActivity} from '../../actions/socket'
+
 import autobind from '@mxplay/autobind'
 
 import styles from '../../styles/details/index.scss'
@@ -17,7 +19,8 @@ export default class Details extends Component {
       emojis: ['a', 'b', 'c'],
       selectedEmojis: []
     }
-    autobind(this, 'onEmojiClick', 'setEmoji')
+    this.player = null
+    autobind(this, 'onEmojiClick', 'setEmoji', 'playerReady')
   }
 
   onEmojiClick(e){
@@ -37,7 +40,16 @@ export default class Details extends Component {
       this.setState({
         selectedEmojis : [elem]
       })
+      addActivity(this.props.dispatch, {
+        id: "1234",
+        time: 1,
+        emojiID: elem.id
+      })
     }
+  }
+
+  playerReady(player){
+    this.player = player
   }
 
   render(){
@@ -47,7 +59,7 @@ export default class Details extends Component {
     })
     return (
       <div class='details'>
-          <Player />
+          <Player playerReady={this.playerReady} />
           <div className={showEmoji ? "react react-open" : "react"} onClick={this.onEmojiClick} > {elem} </div>
           {selectedEmojis && selectedEmojis.length > 0 &&
             <Animator emojis={selectedEmojis} />
