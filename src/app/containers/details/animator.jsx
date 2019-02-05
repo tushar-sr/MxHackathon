@@ -23,8 +23,8 @@ export default class Animator extends Component {
   render () {
     const {emojis} = this.state
     const elem = emojis.map((emoji, index) => {
-      const width = Math.random * 100
-      return <div className='animator animation' ref={element => this.element = element} >{emoji}</div>
+      const width = Math.random() * 100
+      return <div className='animator animation' ref={element => this.element = element} key={width + index} >{emoji}</div>
     })
     return (
       <div className='bubble-animator'>

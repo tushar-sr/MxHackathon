@@ -20,13 +20,19 @@ export default class Details extends Component {
     autobind(this, 'onEmojiClick', 'setEmoji')
   }
 
-  onEmojiClick(){
+  onEmojiClick(e){
     this.setState({
       showEmoji : !this.state.showEmoji
     })
+    if(this.state.showEmoji){
+      this.setState({
+        selectedEmojis : []
+      })
+    }
   }
 
   setEmoji(e){
+    // e.stopPropagation()
     if(this.state.showEmoji){
       const elem = e.target.getAttribute('data-attributes')
       this.setState({
