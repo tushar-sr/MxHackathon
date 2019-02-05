@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import autobind from '@mxplay/autobind'
 
 import styles from '../../styles/details/animator.scss'
+import videoData from '../../data'
 
 export default class Animator extends Component {
 
@@ -22,9 +23,12 @@ export default class Animator extends Component {
 
   render () {
     const {emojis} = this.state
-    const elem = emojis.map((emoji, index) => {
+    let videoEmojis = videoData[this.props.id].emojis
+    const elem = emojis.map((emoji_id, index) => {
       const width = Math.random() * 100
-      return <div className='animator animation' ref={element => this.element = element} key={width + index} >{emoji}</div>
+      return <div className='animator animation' ref={element => this.element = element} key={width + index} >
+        <img src={videoEmojis[emoji_id]} />
+      </div>
     })
     return (
       <div className='bubble-animator'>

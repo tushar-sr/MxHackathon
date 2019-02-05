@@ -41,14 +41,14 @@ class Details extends Component {
 
   setEmoji(e){
     if(this.state.showEmoji){
-      const elem = e.target.getAttribute('data-attributes')
+      const id = e.currentTarget.getAttribute('data-id')
       this.setState({
-        selectedEmojis : [elem]
+        selectedEmojis : [id]
       })
       addActivity(this.props.dispatch, {
-        id: "1234",
+        id: this.props.id,
         time: this.player && this.player.currentTime(),
-        emojiID: elem.id || 123
+        emojiID: id
       })
     }
   }
@@ -71,17 +71,25 @@ class Details extends Component {
   }
 
   render(){
-    const {showEmoji, selectedEmojis, emojis } = this.state
+    const {showEmoji, selectedEmojis} = this.state
+    let emojis = videoData[this.props.id].emojis
     let details = videoData[this.props.id].details
-    const elem = emojis.map((item, index) => {
-      return <div className= 'emojis' onClick ={this.setEmoji} data-attributes={item} key={index}>{item}</div>
-    })
+    let elem = []
+    for(let key in emojis){
+      if(emojis.hasOwnProperty(key)){
+        let url = emojis[key]
+        elem.push(
+        <div className='emojis' onClick ={this.setEmoji} data-id={key} key={key}>
+          <img src={url} />
+        </div>)
+      }
+    }
     return (
       <div class='details'>
           <Player playerReady={this.playerReady} onTimeUpdate={this.onTimeUpdate} />
           <div className={showEmoji ? "react react-open" : "react"} onClick={this.onEmojiClick} > {elem} </div>
           {selectedEmojis && selectedEmojis.length > 0 &&
-            <Animator emojis={selectedEmojis} />
+            <Animator emojis={selectedEmojis} id={this.props.id} />
           }
 
           <ActivityGraph duration={details.duration} handleChartClick = {this.handleChartClick} />

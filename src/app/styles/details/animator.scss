@@ -9,6 +9,10 @@
     display: inline-block;
     transform: translateY(800);
     transition: transform .14s ease;
+    width: 60px;
+    img {
+      width: 100%;
+    }
   }
   .animation{
     animation: bubble 3s forwards linear;
