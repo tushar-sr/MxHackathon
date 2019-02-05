@@ -32,7 +32,6 @@ export default class Details extends Component {
   }
 
   setEmoji(e){
-    // e.stopPropagation()
     if(this.state.showEmoji){
       const elem = e.target.getAttribute('data-attributes')
       this.setState({
