@@ -1,0 +1,25 @@
+.bubble-animator {
+  margin: 0 20px;
+  position: absolute;
+  .animator{
+    margin: 0 4px;
+    color: green;
+    font-size: 40px;
+    vertical-align: top;
+    display: inline-block;
+    transform: translateY(800);
+    transition: transform .14s ease;
+  }
+  .animation{
+    animation: bubble 3s forwards linear;
+  }
+}
+
+@keyframes bubble {
+  from {
+    transform: translate(10px, 0);
+  }
+  to {
+    transform: translate(40px, -800px);
+  }
+}

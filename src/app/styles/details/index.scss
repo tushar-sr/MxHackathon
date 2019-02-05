@@ -1,0 +1,23 @@
+
+.details{
+  .react{
+    width: 100px;
+    height: 40px;
+    margin: 8px 0;
+    font-size: 22px;
+    line-height: 40px;
+    text-align: center;
+    color: #2d40a9;
+    border-radius: 0 20px 20px 0;
+    background-color: #53ec37;
+    transition: width .4s cubic-bezier(0.47, 0.75, 0.68, 1.26);
+  }
+  .react-open{
+    width: 320px;
+  }
+  .emojis{
+    margin: 0 8px;
+    display: inline-block;
+  }
+  
+}

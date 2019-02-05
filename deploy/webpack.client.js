@@ -19,6 +19,7 @@ const extractBundleCSS = new ExtractTextPlugin({
 const context = path.resolve(__dirname + '/../')
 
 let config = {
+    devtool: 'sourcemap',
 	context: context,
 	entry: {
 		app: './src/client/index.jsx'

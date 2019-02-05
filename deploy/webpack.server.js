@@ -99,6 +99,5 @@ module.exports = {
                     }]
             }
         ]
-    },
-    devtool: 'sourcemap'
+    }
 };
