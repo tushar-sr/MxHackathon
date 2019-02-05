@@ -101,6 +101,10 @@ let config = {
             {
                 from: context + '/src/fonts',
                 to: PATHS.build + '/fonts'
+            },
+            {
+                from: context + '/src/js',
+                to: PATHS.build + '/js'
             }
         ]),
         new ManifestPlugin({

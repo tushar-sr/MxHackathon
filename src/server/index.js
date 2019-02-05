@@ -6,6 +6,8 @@ import viewHandler from './viewhandler'
 import staticMiddleware from './middleware/static'
 import serve from 'koa-static'
 import settings from './settings'
+import socketIO from 'socket.io'
+import videoData from '../app/data'
 
 export async function createServer() {
     const app = new Koa();
@@ -16,6 +18,7 @@ export async function createServer() {
         compileDebug: false,
         app: app // equals to pug.use(app) and app.use(pug.middleware)
     });
+
     app.use(staticMiddleware)
     app.use(serve('dist/client')) // Static File Handler
     app.use(viewHandler) // All the react routes handlers
@@ -28,10 +31,28 @@ export async function createServer() {
     })
 
     const server = http.createServer(app.callback());
+    var io = socketIO(server)
+    io.on('connection', function(socket){
+        socket.on('activity', function(data){
+            let video = videoData[data.id]
+            let activities = video.activities
+            let time = Math.floor(data.time)
+            if(!activities[time]){
+                activities[time] = []
+            }
+            activities[time].push(data.emojiID)
+            io.emit('activity', data)
+            io.emit('videoActivities', activities)
+            })
 
-    // Add a `close` event listener so we can clean up resources.
+            socket.on('getActivities', function(id){
+                let video = videoData[id]
+                let activities = video.activities
+                io.emit('videoActivities', activities)
+            })
+        });
+
     server.on('close', () => {
-        // Handler to tear down database connections, TCP connections, etc
         logger.debug('Server closing, bye!')
     });
     return server

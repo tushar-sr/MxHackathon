@@ -53,7 +53,9 @@
     "react-router-redux": "^4.0.8",
     "react-waypoint": "^8.0.1",
     "redux": "^3.7.2",
+    "socket.io": "^2.2.0",
     "uglifycss": "^0.0.29",
+    "uws": "10.148.1",
     "webpack-manifest-plugin": "^2.0.3",
     "yarn": "^1.9.2"
   },
