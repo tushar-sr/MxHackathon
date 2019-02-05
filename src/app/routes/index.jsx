@@ -43,9 +43,9 @@ export function getLastRoute () {
 
 function startComponent (Component, store, callback, routingParams) {
   lastRoute = store.getState().router
-
   
   const state = store.getState()
+  store.dispatch({type:'UPDATE_ROUTING_PARAMS', payload:routingParams.params})
   const initAction = Component.initAction
   const element = Component.default
 

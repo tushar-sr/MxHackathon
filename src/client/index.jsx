@@ -47,16 +47,7 @@ function renderMain (store) {
 
 function renderComponents () {
   const store = createNewStore({
-    activities: {
-      "1": [
-          [0, 1],
-          [5, 7],
-          [7, 4],
-          [9, 9],
-          [10, 4],
-          [15, 4]
-      ]
-  }
+    activities: {}
   }, true)
   renderHeader(store)
   renderMain(store)

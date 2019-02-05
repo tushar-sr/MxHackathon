@@ -1,17 +1,18 @@
 import { h, render, Component } from 'preact'
-
+import { connect } from 'react-redux'
 import Animator from './animator'
 import Player from './player'
-
-import {addActivity} from '../../actions/socket'
 
 import autobind from '@mxplay/autobind'
 
 import styles from '../../styles/details/index.scss'
 
 import { VideoPlayer } from '@mxplay/video-player'
+import { addActivity, getVideoActivities } from '../../actions/socket'
+import videoData from '../../data'
+import ActivityGraph from '../activityGraph';
 
-export default class Details extends Component {
+class Details extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -34,6 +35,10 @@ export default class Details extends Component {
     }
   }
 
+  componentDidMount(){
+    getVideoActivities(null, this.props.id)
+  }
+
   setEmoji(e){
     if(this.state.showEmoji){
       const elem = e.target.getAttribute('data-attributes')
@@ -42,8 +47,8 @@ export default class Details extends Component {
       })
       addActivity(this.props.dispatch, {
         id: "1234",
-        time: 1,
-        emojiID: elem.id
+        time: this.player && this.player.currentTime(),
+        emojiID: elem.id || 123
       })
     }
   }
@@ -54,6 +59,7 @@ export default class Details extends Component {
 
   render(){
     const {showEmoji, selectedEmojis, emojis } = this.state
+    let details = videoData[this.props.id].details
     const elem = emojis.map((item, index) => {
       return <div className= 'emojis' onClick ={this.setEmoji} data-attributes={item} key={index}>{item}</div>
     })
@@ -64,7 +70,20 @@ export default class Details extends Component {
           {selectedEmojis && selectedEmojis.length > 0 &&
             <Animator emojis={selectedEmojis} />
           }
+
+          <ActivityGraph duration={details.duration} />
       </div>
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  let routeParams = state.routeParams
+  let id = routeParams.id
+
+  return {
+    id: id,
+    activities: {}
+  }
+}
+export default connect(mapStateToProps)(Details)

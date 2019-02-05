@@ -21,33 +21,52 @@ class ActivityGraph extends Component {
     this.updateChart()
   }
 
+  formatData(){
+    let {duration, activities} = this.props
+    if(!activities){
+      return []
+    }
+    let data = []
+    for(let c=0;c<duration;c++){
+      if(activities[c]){
+        data.push([c, activities[c].length])
+      }else {
+        data.push([c, 0])
+      }
+    }
+
+    return data
+  }
+
   updateChart(){
-    let {activities} = this.props
-    let videoActivities = activities["1"]
     let actData = [
       ['Time', 'Activities']
     ]
-    actData = actData.concat(videoActivities)
-    this.data = google.visualization.arrayToDataTable(actData);
+    let formattedData = this.formatData()
+    debugger
+    actData = actData.concat(formattedData)
+    if(actData.length > 1){
+      this.data = google.visualization.arrayToDataTable(actData);
 
-    var options = {
-      title: '',
-      legend: { position: 'none' },
-      tooltip: {
-        trigger: 'none'
-      },
-      vAxis: {
-        gridlines: {
-            color: 'transparent'
+      var options = {
+        title: '',
+        legend: { position: 'none' },
+        tooltip: {
+          trigger: 'none'
+        },
+        vAxis: {
+          gridlines: {
+              color: 'transparent'
+          }
         }
-      }
-    };
-
-    this.chart.draw(this.data, options);
+      };
+      debugger
+      this.chart.draw(this.data, options);
+    }
   }
 
   componentWillReceiveProps(){
-    updateChart()
+    this.updateChart()
   }
 
   handleChartClick(e){
@@ -70,8 +89,10 @@ class ActivityGraph extends Component {
 }
 
 const mapStateToProps = (state) => {
+  let routeParams = state.routeParams
+  let id = routeParams.id
   return {
-    activities: state.activities
+    activities: state.activities && state.activities[id]
   }
 }
 export default connect(mapStateToProps)(ActivityGraph)

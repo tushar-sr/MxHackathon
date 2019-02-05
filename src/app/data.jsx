@@ -1,6 +1,9 @@
 let data = {
     "1234": {
-        activities: {}
+        activities: {},
+        details: {
+            duration: 20
+        }
     }
 }
 
