@@ -1,0 +1,65 @@
+html, body, input {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Roboto', sans-serif;
+}
+body.fixed {
+    height: 100%;
+    overflow: hidden;
+}
+* {
+    box-sizing: border-box;
+}
+// *::-webkit-scrollbar{
+//     display: none;
+// }
+// *::-moz-scrollbar{
+//     display: none;
+// }
+a {
+    text-decoration: none;
+    color: inherit;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+.inline {
+    display: inline-block;
+    vertical-align: top;
+}
+.stub {
+    color : transparent !important;
+    background-color : #f6f7f8;
+    border : none !important;
+    animation: stubWave 20s linear infinite;
+    background-image :-webkit-linear-gradient(left, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%) !important;
+    background-image :-moz-linear-gradient(left, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%) !important;
+    background-image :-o-linear-gradient(left, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%) !important;
+    background-image :-ms-linear-gradient(left, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%) !important;
+    background-image :linear-gradient(left, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%) !important;
+    background-size :800px 100px;
+}
+* {
+    box-sizing: border-box;
+}
+
+@keyframes stubWave {
+    0% {
+        background-position: -500px 0
+    }
+    100% {
+        background-position: 500px 0
+    }
+}
+
+.image-card {
+    background-size: cover;
+}
+
+video#global-player {
+    display: none;
+}
+
+.h1-heading, .h2-heading, .h3-heading {
+  margin: 0px;
+  font-weight: normal;
+  font-size: inherit;
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="150px" height="150px" viewBox="0 0 150 150" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>B01263B6-2793-4A25-984F-311E4B02FA1F</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <circle id="path-1" cx="45" cy="45" r="45"></circle>
+    </defs>
+    <g id="Watchlist" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Watchlist-–-Empty-State" transform="translate(-101.000000, -254.000000)">
+            <g id="Group-3" transform="translate(35.000000, 254.000000)">
+                <g id="empty_no_watchlist" transform="translate(66.000000, 0.000000)">
+                    <g id="Group" transform="translate(5.000000, 11.000000)">
+                        <circle id="Oval-3" fill="#FFFBEA" cx="72.5" cy="63.5" r="63.5"></circle>
+                        <polygon id="Star" fill="#47E6B1" points="118 30.5 115.87868 31.1213203 116.5 29 115.87868 26.8786797 118 27.5 120.12132 26.8786797 119.5 29 120.12132 31.1213203"></polygon>
+                        <polygon id="Star" fill="#3C8CF0" points="3 88.5 0.878679656 89.1213203 1.5 87 0.878679656 84.8786797 3 85.5 5.12132034 84.8786797 4.5 87 5.12132034 89.1213203"></polygon>
+                        <circle id="Oval" fill="#F55F44" cx="35" cy="2" r="2"></circle>
+                        <circle id="Oval" fill="#FD43B3" cx="138" cy="84" r="2"></circle>
+                        <circle id="Oval" fill="#FDD835" cx="37" cy="108" r="2"></circle>
+                        <circle id="Oval" fill="#47E6B1" cx="22" cy="35" r="1"></circle>
+                        <g id="Group-2" transform="translate(28.000000, 19.000000)">
+                            <mask id="mask-2" fill="white">
+                                <use xlink:href="#path-1"></use>
+                            </mask>
+                            <use id="Mask" fill="#FEDB41" xlink:href="#path-1"></use>
+                        </g>
+                        <g transform="translate(81.462881, 56.723215) rotate(30.000000) translate(-81.462881, -56.723215) translate(58.962881, 18.223215)">
+                            <rect id="Rectangle-2" fill="#47E6B1" x="0" y="0" width="44.554513" height="76.3791651"></rect>
+                            <rect id="Rectangle-3" fill="#E7FFF7" x="9.54739564" y="5.30410869" width="22.2772565" height="1.06082174" rx="0.530410869"></rect>
+                            <rect id="Rectangle-3" fill="#E7FFF7" x="35.0071173" y="5.30410869" width="2.12164348" height="1.06082174" rx="0.530410869"></rect>
+                            <rect id="Rectangle" fill="#E7FFF7" x="1.06082174" y="10.6082174" width="42.4328695" height="63.6493043" rx="1"></rect>
+                            <g id="play-button" transform="translate(11.669039, 31.824652)" fill="#F55F44" fill-rule="nonzero">
+                                <path d="M9.54739564,0 C4.27458534,0 0,4.27451075 0,9.54739564 C0,14.8202805 4.27458534,19.0947913 9.54739564,19.0947913 C14.8202059,19.0947913 19.0947913,14.8202805 19.0947913,9.54739564 C19.0947913,4.27451075 14.8202059,0 9.54739564,0 Z M12.8472143,10.0534822 L8.07351644,13.0370433 C7.97692365,13.0973486 7.8670913,13.127669 7.75725896,13.127669 C7.65775719,13.127669 7.55810625,13.1029054 7.46792812,13.0527816 C7.27824822,12.9476111 7.16054673,12.7480109 7.16054673,12.5309568 L7.16054673,6.5638345 C7.16054673,6.34678043 7.27824822,6.14718019 7.46792812,6.04200966 C7.65760802,5.93624242 7.8895426,5.94265707 8.07351644,6.05774794 L12.8472143,9.04130908 C13.0216034,9.15058201 13.127669,9.34171639 13.127669,9.54739564 C13.127669,9.75307489 13.0216034,9.94424657 12.8472143,10.0534822 Z" id="Shape"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

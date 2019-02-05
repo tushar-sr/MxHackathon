@@ -1,0 +1,58 @@
+{
+    "static_url": "",
+    "media_url": "",
+    "debug": true,
+    "requestTimeout": 2000,
+    "resolutions": {
+        "16x9": [
+            ["1x",160],
+            ["1_5x", 240],
+            ["2x", 320],
+            ["3x", 480],
+            ["4x", 640],
+            ["7x", 1020],
+            ["9x", 1440]
+        ],
+        "1x1": [
+            ["1x",   60],
+            ["2x",   120],
+            ["3x",   180],
+            ["4x",   240],
+            ["5x",   300],
+            ["6x",   360],
+            ["7x",   420]
+        ],
+        "2x3": [
+            ["1x",   120],
+            ["2x",   240],
+            ["3x",   360],
+            ["4x",   480]
+        ]
+    },
+    "api": {
+        "global": "https://api.mxplay.com/v1/web",
+        "seo": "https://seo.mxplay.com/v1/api/seo",
+        "config": "https://api.mxplay.com/v1/config/web"
+    },
+    "platform": "com.mxplay.mobile",
+    "newrelic": {
+        "appName": "mxplay_mweb",
+        "licenseKey": "82e87a6ab5f3fa314527aca406aadd180da5198d"
+    },
+    "tabIDs": {
+        "home": "87c3ddc974dcf12294e9412bec44b097",
+        "buzz": "4e82d34404a477419f811cd303e216e7",
+        "music": "72d9820f7da319cbb789a0f8e4b84e7e",
+        "shows": "feacc8bb9a44e3c86e2236381f6baaf3",
+        "webSeries": "7694f56f59238654b3a6303885f9166f",
+        "movies": "08f8fce450d1ecf00efa820f611cf57b",
+        "sports": "6256019abbad655653afffa3056345a1",
+        "news": "5f15a7356cf9dfceeb355fc49dd2be8a"
+    },
+    "configUpdateInterval": 120,
+    "analytics": {
+        "platform": "web.mobile",
+        "endpoint": "https://evt.dev.mxplay.com/v1/client/web/records"
+    },
+    "environment": "beta"
+}

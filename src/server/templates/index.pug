@@ -1,0 +1,10 @@
+doctype html  
+html(lang='en')
+    meta(name="viewport",content="width=device-width, maximum-scale=1.0, initial-scale=1, user-scalable=no")
+    head 
+        style !{styles}
+    body
+        div(id='header')
+        div(id='main')
+        each source in scripts
+            script(src=source, defer)
