@@ -36,7 +36,7 @@ class ActivityGraph extends Component {
       tooltip: {
         trigger: 'none'
       },
-      uAxis: {
+      vAxis: {
         gridlines: {
             color: 'transparent'
         }
