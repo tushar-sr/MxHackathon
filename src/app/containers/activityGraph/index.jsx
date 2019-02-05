@@ -43,7 +43,6 @@ class ActivityGraph extends Component {
       ['Time', 'Activities']
     ]
     let formattedData = this.formatData()
-    debugger
     actData = actData.concat(formattedData)
     if(actData.length > 1){
       this.data = google.visualization.arrayToDataTable(actData);

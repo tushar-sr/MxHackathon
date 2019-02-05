@@ -87,7 +87,7 @@ const mapStateToProps = (state) => {
 
   return {
     id: id,
-    activities: {}
+    activities: state.activities && state.activities[id]
   }
 }
 export default connect(mapStateToProps)(Details)
