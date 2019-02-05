@@ -12,17 +12,19 @@ class ActivityGraph extends Component {
     this.handleChartClick = this.handleChartClick.bind(this)
   }
   componentDidMount(){
+    this.graphWidth = this.container.clientWidth
+    this.graphHeight = this.graphWidth*0.1
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(this.onChartLoaded);
   }
   onChartLoaded(){
-    this.chart = new google.visualization.ColumnChart(document.getElementById('activity_chart'));
+    this.chart = new google.visualization.LineChart(document.getElementById('activity_chart'));
     google.visualization.events.addListener(this.chart, 'select', this.handleChartClick);
-    this.updateChart()
+    this.updateChart(this.props)
   }
 
-  formatData(){
-    let {duration, activities} = this.props
+  formatData(props){
+    let {duration, activities} = props
     if(!activities){
       return []
     }
@@ -38,18 +40,27 @@ class ActivityGraph extends Component {
     return data
   }
 
-  updateChart(){
+  updateChart(props){
+    if(!this.chart){
+      return
+    }
     let actData = [
       ['Time', 'Activities']
     ]
-    let formattedData = this.formatData()
+    let formattedData = this.formatData(props)
     actData = actData.concat(formattedData)
     if(actData.length > 1){
-      this.data = google.visualization.arrayToDataTable(actData);
+      this.data = google.visualization && google.visualization.arrayToDataTable(actData);
 
       var options = {
+        width: this.graphWidth,
+        height: this.graphHeight,
         title: '',
         legend: { position: 'none' },
+        'chartArea': {'width': '95%', 'height': '85%'},
+        animation: {
+          duration: 200
+        },
         tooltip: {
           trigger: 'none'
         },
@@ -57,14 +68,19 @@ class ActivityGraph extends Component {
           gridlines: {
               color: 'transparent'
           }
+        },
+        hAxis: {
+          gridlines: {
+            color: 'transparent'
+          }
         }
       };
       this.chart.draw(this.data, options);
     }
   }
 
-  componentWillReceiveProps(){
-    this.updateChart()
+  componentWillReceiveProps(nextProps){
+    this.updateChart(nextProps)
   }
 
   handleChartClick(e){
@@ -79,7 +95,7 @@ class ActivityGraph extends Component {
 
   render () {
     return (
-      <div className='graph-container'>
+      <div className='graph-container' ref={(ele) => {this.container = ele}}>
         <div id="activity_chart"></div>
       </div>
     )

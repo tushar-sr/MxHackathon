@@ -10,17 +10,7 @@ class Socket extends Component {
     }
     componentDidMount(){
         var socket = window.io()
-        socket.on('activity', function(data){
-            console.log(data)
-        })
         socket.on('videoActivities', this.onActivitiesReceived)
-        window.setTimeout(() => {
-            addActivity(null, {
-                id: "1234",
-                time: 10,
-                emojiID: "789"
-            })
-        }, 5000)
         window.socket = socket
     }
 

@@ -1,8 +1,9 @@
 let data = {
     "1234": {
         activities: {},
+        polls: {},
         details: {
-            duration: 20
+            duration: 808
         }
     }
 }

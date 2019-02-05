@@ -43,14 +43,20 @@ export async function createServer() {
             activities[time].push(data.emojiID)
             io.emit('activity', data)
             io.emit('videoActivities', {id: data.id,activities: activities})
-            })
+        })
 
-            socket.on('getActivities', function(id){
-                let video = videoData[id]
-                let activities = video.activities
-                io.emit('videoActivities', {id: id,activities: activities})
-            })
-        });
+        socket.on('getActivities', function(id){
+            let video = videoData[id]
+            let activities = video.activities
+            io.emit('videoActivities', {id: id,activities: activities})
+        })
+
+        socket.on('getActivities', function(id){
+            let video = videoData[id]
+            let activities = video.activities
+            io.emit('videoActivities', {id: id,activities: activities})
+        })
+    });
 
     server.on('close', () => {
         logger.debug('Server closing, bye!')
