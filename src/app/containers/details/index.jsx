@@ -42,7 +42,7 @@ export default class Details extends Component {
       })
       addActivity(this.props.dispatch, {
         id: "1234",
-        time: 1,
+        time: this.player && this.player.currentTime(),
         emojiID: elem.id
       })
     }
