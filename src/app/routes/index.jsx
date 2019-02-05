@@ -60,7 +60,6 @@ function startComponent (Component, store, callback, routingParams) {
     })
   }
   callback(null, element)
-
 }
 
 export default (store, client) => {
@@ -73,6 +72,15 @@ export default (store, client) => {
         getComponent={(routingParams, callback) => {
           require.ensure([], component => {
             startComponent(require('../containers/homepage'), store, callback, routingParams)
+          }, 'home')
+        }}
+      />
+      <Route
+        exact
+        path="/graph"
+        getComponent={(routingParams, callback) => {
+          require.ensure([], component => {
+            startComponent(require('../containers/graph'), store, callback, routingParams)
           }, 'home')
         }}
       />
