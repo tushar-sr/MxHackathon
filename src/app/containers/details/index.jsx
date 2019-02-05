@@ -58,10 +58,12 @@ class Details extends Component {
   }
 
   onTimeUpdate(time){
-    const emojis = this.player && this.player.currentTime()
-    this.setState({
-      selectedEmojis : emojis
-    })
+    const emojis = this.props.activities[time]
+    if(emojis && emojis.length > 0) {
+      this.setState({
+        selectedEmojis : emojis
+      })
+    }
   }
 
   playerReady(player){
