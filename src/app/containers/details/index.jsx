@@ -8,6 +8,7 @@ import autobind from '@mxplay/autobind'
 import styles from '../../styles/details/index.scss'
 
 import { VideoPlayer } from '@mxplay/video-player'
+import Poll from './poll';
 import { addActivity, getVideoActivities } from '../../actions/socket'
 import videoData from '../../data'
 import ActivityGraph from '../activityGraph';
@@ -91,8 +92,8 @@ class Details extends Component {
           {selectedEmojis && selectedEmojis.length > 0 &&
             <Animator emojis={selectedEmojis} id={this.props.id} />
           }
-
           <ActivityGraph duration={details.duration} handleChartClick = {this.handleChartClick} />
+          <Poll/>
       </div>
     )
   }

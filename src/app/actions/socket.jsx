@@ -17,4 +17,23 @@ const onActivitiesReceived = (dispatch, data) => {
     })
 }
 
+const addPoll = (dispatch, data) => {
+    if(window.socket){
+        window.socket.emit('poll', data)
+    }
+}
+
+const getPoll = (dispatch, id) => {
+    if(window.socket){
+        window.socket.emit('getPoll', id)
+    }
+}
+
+const onPollReceived = (dispatch, data) => {
+    dispatch({
+        type: 'ON_POLLS_RECEIVED',
+        payload: data
+    })
+}
+
 export { addActivity, getVideoActivities, onActivitiesReceived }
