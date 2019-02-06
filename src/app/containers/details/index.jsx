@@ -102,9 +102,10 @@ class Details extends Component {
           {selectedEmojis && selectedEmojis.length > 0 &&
             <Animator emojis={selectedEmojis} id={this.props.id} />
           }
-          {viewerCount && <div className="viewer-count">
+          {/* {viewerCount && <div className="viewer-count">
             Currently Viewing: {viewerCount}
-          </div>}
+          </div>
+          } */}
           <ActivityGraph duration={details.duration} handleChartClick = {this.handleChartClick} />
           <Poll/>
       </div>
