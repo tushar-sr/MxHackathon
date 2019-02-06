@@ -17,4 +17,17 @@ const onActivitiesReceived = (dispatch, data) => {
     })
 }
 
-export { addActivity, getVideoActivities, onActivitiesReceived }
+const onViewersReceived = (dispatch, data) => {
+    dispatch({
+        type: 'ON_VIEWERS_RECEIVED',
+        payload: data
+    })
+}
+
+const sendHearbeat = (dispatch) => {
+    if(window.socket){
+        window.socket.emit('heartbeat', window.location.pathname)
+    }
+}
+
+export { addActivity, getVideoActivities, onActivitiesReceived, onViewersReceived, sendHearbeat }

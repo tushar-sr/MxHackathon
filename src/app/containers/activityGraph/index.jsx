@@ -31,9 +31,9 @@ class ActivityGraph extends Component {
     let data = []
     for(let c=0;c<duration;c++){
       if(activities[c]){
-        data.push([c, 5 + activities[c].length])
+        data.push([c, activities[c].length])
       }else {
-        data.push([c, 5])
+        data.push([c, 0])
       }
     }
 

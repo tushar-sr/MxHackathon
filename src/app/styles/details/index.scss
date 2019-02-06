@@ -19,3 +19,17 @@
   }
   
 }
+
+.viewer-count {
+  position: absolute;
+  pointer-events: none;
+  z-index: 10000000000;
+  background: rgba(0,0,0,0.4);
+  color: #fff;
+  top: 80px;
+  right: 20px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  letter-spacing: 0px;
+  font-size: 14px;
+}
