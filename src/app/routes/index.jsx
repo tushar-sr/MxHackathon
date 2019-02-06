@@ -77,15 +77,6 @@ export default (store, client) => {
       />
       <Route
         exact
-        path="/graph"
-        getComponent={(routingParams, callback) => {
-          require.ensure([], component => {
-            startComponent(require('../containers/graph'), store, callback, routingParams)
-          }, 'home')
-        }}
-      />
-      <Route
-        exact
         path="/details/:id"
         getComponent={(routingParams, callback) => {
           require.ensure([], component => {

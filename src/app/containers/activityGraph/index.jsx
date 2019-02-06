@@ -13,7 +13,7 @@ class ActivityGraph extends Component {
   }
   componentDidMount(){
     this.graphWidth = this.container.clientWidth
-    this.graphHeight = this.graphWidth*0.1
+    this.graphHeight = this.graphWidth*0.3
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(this.onChartLoaded);
   }
@@ -31,9 +31,9 @@ class ActivityGraph extends Component {
     let data = []
     for(let c=0;c<duration;c++){
       if(activities[c]){
-        data.push([c, activities[c].length])
+        data.push([c, 5 + activities[c].length])
       }else {
-        data.push([c, 0])
+        data.push([c, 5])
       }
     }
 
@@ -57,7 +57,10 @@ class ActivityGraph extends Component {
         height: this.graphHeight,
         title: '',
         legend: { position: 'none' },
-        'chartArea': {'width': '95%', 'height': '85%'},
+        backgroundColor: '#f3f3f3',
+        curveType: 'function',
+        chartArea: {'width': '80%', 'height': '80%'},
+        colors: ["rgb(169, 220, 156)"],
         animation: {
           duration: 200
         },
@@ -67,7 +70,8 @@ class ActivityGraph extends Component {
         vAxis: {
           gridlines: {
               color: 'transparent'
-          }
+          },
+          minValue: 0
         },
         hAxis: {
           gridlines: {
