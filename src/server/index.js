@@ -40,16 +40,41 @@ export async function createServer() {
         })
         socket.on('activity', function(data){
             let video = videoData[data.id]
-            let activities = video.activities
-            let time = Math.floor(data.time)
-            if(!activities[time]){
-                activities[time] = []
+            if(video){
+                let activities = video.activities
+                let time = Math.floor(data.time)
+                if(!activities[time]){
+                    activities[time] = []
+                }
+                activities[time].push(data.emojiID)
+                io.emit('activity', data)
+                io.emit('videoActivities', {id: data.id,activities: activities})
             }
-            activities[time].push(data.emojiID)
-            io.emit('activity', data)
-            io.emit('videoActivities', {id: data.id,activities: activities})
         })
 
+
+        socket.on('getPoll', function(id){
+            let video = videoData[id]
+            debugger
+            if(video){
+                let poll = video.poll
+                io.emit('pollData', {id: id,poll: poll})
+            }
+        })
+        socket.on('poll', function(data){
+            let video = videoData[data.id]
+            if(video){
+                let poll = video.poll
+                let value = data.value
+                poll.options.map(function(opt){
+                    if(opt.name == value){
+                        poll.total++
+                        opt.count++
+                    }
+                })
+                io.emit('pollData', {id: data.id,poll: poll})
+            }
+        })
         socket.on('heartbeat', function(url){
             let connID = socket.id
             connections[connID] = url
@@ -57,8 +82,10 @@ export async function createServer() {
 
         socket.on('getActivities', function(id){
             let video = videoData[id]
-            let activities = video.activities
-            io.emit('videoActivities', {id: id,activities: activities})
+            if(video){
+                let activities = video.activities
+                io.emit('videoActivities', {id: id,activities: activities})
+            }
         })
     });
     

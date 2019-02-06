@@ -4,16 +4,25 @@ import { connect } from 'react-redux'
 import autobind from '@mxplay/autobind'
 
 import styles from '../../styles/details/poll.scss'
+import { addPoll } from '../../actions/socket';
 
 class Poll extends Component {
 
   constructor(props) {
     super(props)
-    autobind(this, 'update')
+    autobind(this, 'update', 'onOptionClick')
   }
 
   update(){
     return false
+  }
+  onOptionClick(e){
+    let id = this.props.id
+    var target = e.currentTarget
+    let value = target.getAttribute('data-value')
+    addPoll(this.props.dispatch, {
+      id,value
+    })
   }
 
   render () {
@@ -32,7 +41,7 @@ class Poll extends Component {
         color: textColor
       }
       elem.push(
-        <div className='poll-elements' style={style} onClick={this.update} >
+        <div className='poll-elements' style={style} data-value={option.name} onClick={this.onOptionClick} >
           {name}
           <div className='poll-value-percent'>{`(${percentage}%)`}</div>
         </div>
@@ -56,7 +65,9 @@ const mapStateToProps = (state) => {
   let routeParams = state.routeParams
   let id = routeParams.id
   return {
-    poll: state.polls && state.polls[id] || examplePoll
+    id,
+    poll: state.poll,
+    showPoll: state.showPoll
   }
 }
 export default connect(mapStateToProps)(Poll)

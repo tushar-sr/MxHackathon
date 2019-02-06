@@ -29,15 +29,20 @@ class ActivityGraph extends Component {
       return []
     }
     let data = []
+    let maxValue = 1
     for(let c=0;c<duration;c++){
       if(activities[c]){
-        data.push([c, activities[c].length])
+        let value = 5 + activities[c].length
+        if(value > maxValue){
+          maxValue = value
+        }
+        data.push([c, value])
       }else {
-        data.push([c, 0])
+        data.push([c, 5])
       }
     }
 
-    return data
+    return {data, max: maxValue}
   }
 
   updateChart(props){
@@ -47,8 +52,8 @@ class ActivityGraph extends Component {
     let actData = [
       ['Time', 'Activities']
     ]
-    let formattedData = this.formatData(props)
-    actData = actData.concat(formattedData)
+    let {data, max} = this.formatData(props)
+    actData = actData.concat(data)
     if(actData.length > 1){
       this.data = google.visualization && google.visualization.arrayToDataTable(actData);
 
@@ -71,7 +76,10 @@ class ActivityGraph extends Component {
           gridlines: {
               color: 'transparent'
           },
-          minValue: 0
+          viewWindow: {
+            min: 0,
+            max: max * 1.5
+          }
         },
         hAxis: {
           gridlines: {
@@ -110,7 +118,7 @@ const mapStateToProps = (state) => {
   let routeParams = state.routeParams
   let id = routeParams.id
   return {
-    activities: state.activities && state.activities[id]
+    activities: state && state.activities && state.activities[id]
   }
 }
 export default connect(mapStateToProps)(ActivityGraph)

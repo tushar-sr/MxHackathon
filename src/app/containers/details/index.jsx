@@ -9,7 +9,7 @@ import styles from '../../styles/details/index.scss'
 
 import { VideoPlayer } from '@mxplay/video-player'
 import Poll from './poll';
-import { addActivity, getVideoActivities } from '../../actions/socket'
+import { addActivity, getVideoActivities, getPoll } from '../../actions/socket'
 import videoData from '../../data'
 import ActivityGraph from '../activityGraph';
 
@@ -38,6 +38,7 @@ class Details extends Component {
 
   componentDidMount(){
     getVideoActivities(null, this.props.id)
+    getPoll(null, this.props.id)
   }
 
   setEmoji(e){
@@ -56,15 +57,21 @@ class Details extends Component {
 
   handleChartClick(time){
     this.player && this.player.currentTime(time)
-  }
-
-  onTimeUpdate(time){
-    const emojis = this.props.activities[time]
+    const emojis = this.props && this.props.activities[time]
     if(emojis && emojis.length > 0) {
       this.setState({
         selectedEmojis : emojis
       })
     }
+  }
+
+  onTimeUpdate(time){
+    // const emojis = this.props.activities[time]
+    // if(emojis && emojis.length > 0) {
+    //   this.setState({
+    //     selectedEmojis : emojis
+    //   })
+    // }
   }
 
   playerReady(player){
@@ -95,9 +102,9 @@ class Details extends Component {
           {selectedEmojis && selectedEmojis.length > 0 &&
             <Animator emojis={selectedEmojis} id={this.props.id} />
           }
-          <div className="viewer-count">
+          {viewerCount && <div className="viewer-count">
             Currently Viewing: {viewerCount}
-          </div>
+          </div>}
           <ActivityGraph duration={details.duration} handleChartClick = {this.handleChartClick} />
           <Poll/>
       </div>
@@ -111,7 +118,7 @@ const mapStateToProps = (state) => {
 
   return {
     id: id,
-    activities: state.activities && state.activities[id],
+    activities: state && state.activities && state.activities[id],
     viewers: state.viewers || {}
   }
 }
