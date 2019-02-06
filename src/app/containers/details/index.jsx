@@ -42,17 +42,15 @@ class Details extends Component {
   }
 
   setEmoji(e){
-    if(this.state.showEmoji){
-      const id = e.currentTarget.getAttribute('data-id')
-      this.setState({
-        selectedEmojis : [id]
-      })
-      addActivity(this.props.dispatch, {
-        id: this.props.id,
-        time: this.player && this.player.currentTime(),
-        emojiID: id
-      })
-    }
+    const id = e.currentTarget.getAttribute('data-id')
+    this.setState({
+      selectedEmojis : [id]
+    })
+    addActivity(this.props.dispatch, {
+      id: this.props.id,
+      time: this.player && this.player.currentTime(),
+      emojiID: id
+    })
   }
 
   handleChartClick(time){
@@ -98,7 +96,7 @@ class Details extends Component {
     return (
       <div class='details'>
           <Player playerReady={this.playerReady} onTimeUpdate={this.onTimeUpdate} />
-          <div className={showEmoji ? "react react-open" : "react"} onClick={this.onEmojiClick} > {elem} </div>
+          <div className={showEmoji ? "react react-open" : "react"} > {elem} </div>
           {selectedEmojis && selectedEmojis.length > 0 &&
             <Animator emojis={selectedEmojis} id={this.props.id} />
           }
