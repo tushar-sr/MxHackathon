@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'icomoon';
+    src:  url('/fonts/ico-moon.eot?iagvkv');
+    src:  url('/fonts/ico-moon.eot?iagvkv#iefix') format('embedded-opentype'),
+      url('/fonts/ico-moon.ttf?iagvkv') format('truetype'),
+      url('/fonts/ico-moon.woff?iagvkv') format('woff'),
+      url('/fonts/ico-moon.svg?iagvkv#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
 html, body, input {
     padding: 0px;
     margin: 0px;

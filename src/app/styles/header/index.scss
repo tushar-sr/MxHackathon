@@ -1,2 +1,13 @@
 @import "variables";
 
+.header-container {
+    height: 60px;
+    line-height: 60px;
+    background: #3c8cf0;
+    text-align: center;
+    img {
+        height: 70%;
+        display: inline-block;
+        vertical-align: middle;
+    }
+}

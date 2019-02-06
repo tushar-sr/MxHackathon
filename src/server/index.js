@@ -8,6 +8,7 @@ import serve from 'koa-static'
 import settings from './settings'
 import socketIO from 'socket.io'
 import videoData from '../app/data'
+let connections = {}
 
 export async function createServer() {
     const app = new Koa();
@@ -33,6 +34,10 @@ export async function createServer() {
     const server = http.createServer(app.callback());
     var io = socketIO(server)
     io.on('connection', function(socket){
+        socket.on('disconnect', function(reason){
+            let connID = socket.id
+            delete connections[connID]
+        })
         socket.on('activity', function(data){
             let video = videoData[data.id]
             let activities = video.activities
@@ -45,10 +50,9 @@ export async function createServer() {
             io.emit('videoActivities', {id: data.id,activities: activities})
         })
 
-        socket.on('getActivities', function(id){
-            let video = videoData[id]
-            let activities = video.activities
-            io.emit('videoActivities', {id: id,activities: activities})
+        socket.on('heartbeat', function(url){
+            let connID = socket.id
+            connections[connID] = url
         })
 
         socket.on('getActivities', function(id){
@@ -57,6 +61,19 @@ export async function createServer() {
             io.emit('videoActivities', {id: id,activities: activities})
         })
     });
+    
+    setInterval(()=> {
+        let data = {}
+        for(let key in connections){
+            if(connections.hasOwnProperty(key)){
+                if(!data[connections[key]]){
+                    data[connections[key]] = 0
+                }
+                data[connections[key]]++
+            }
+        }
+        io.emit('viewers', data)
+    }, 1000)
 
     server.on('close', () => {
         logger.debug('Server closing, bye!')

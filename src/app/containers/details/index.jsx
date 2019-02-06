@@ -75,6 +75,9 @@ class Details extends Component {
     const {showEmoji, selectedEmojis} = this.state
     let emojis = videoData[this.props.id].emojis
     let details = videoData[this.props.id].details
+    let viewers = this.props.viewers
+    let currentUrl = window.location.pathname
+    let viewerCount = viewers[currentUrl] || 0
     let elem = []
     for(let key in emojis){
       if(emojis.hasOwnProperty(key)){
@@ -92,6 +95,9 @@ class Details extends Component {
           {selectedEmojis && selectedEmojis.length > 0 &&
             <Animator emojis={selectedEmojis} id={this.props.id} />
           }
+          <div className="viewer-count">
+            Currently Viewing: {viewerCount}
+          </div>
           <ActivityGraph duration={details.duration} handleChartClick = {this.handleChartClick} />
           <Poll/>
       </div>
@@ -105,7 +111,8 @@ const mapStateToProps = (state) => {
 
   return {
     id: id,
-    activities: state.activities && state.activities[id]
+    activities: state.activities && state.activities[id],
+    viewers: state.viewers || {}
   }
 }
 export default connect(mapStateToProps)(Details)

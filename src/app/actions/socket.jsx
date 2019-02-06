@@ -17,6 +17,20 @@ const onActivitiesReceived = (dispatch, data) => {
     })
 }
 
+
+const onViewersReceived = (dispatch, data) => {
+    dispatch({
+        type: 'ON_VIEWERS_RECEIVED',
+        payload: data
+    })
+}
+
+const sendHearbeat = (dispatch) => {
+    if(window.socket){
+        window.socket.emit('heartbeat', window.location.pathname)
+    }
+}
+
 const addPoll = (dispatch, data) => {
     if(window.socket){
         window.socket.emit('poll', data)
@@ -36,4 +50,5 @@ const onPollReceived = (dispatch, data) => {
     })
 }
 
-export { addActivity, getVideoActivities, onActivitiesReceived }
+export { addActivity, getVideoActivities, onActivitiesReceived, onViewersReceived, sendHearbeat }
+
