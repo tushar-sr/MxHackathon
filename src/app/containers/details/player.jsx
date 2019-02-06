@@ -71,7 +71,7 @@ export default class Player extends Component {
 
     const stream = {
       "hls": {
-        "url": "https://j2apps.s.llnwi.net/video/video/5103b29e25af9c4fa9166aff6336a210/2/hls/h264_baseline.m3u8",
+        "url": "https://j2apps.s.llnwi.net/video/5103b29e25af9c4fa9166aff6336a210/2/hls/h264_baseline.m3u8",
         "hlsId": null
       },
       "dash": {
