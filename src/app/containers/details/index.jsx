@@ -9,6 +9,7 @@ import styles from '../../styles/details/index.scss'
 
 import { VideoPlayer } from '@mxplay/video-player'
 import Poll from './poll';
+import ViewCount from './viewCount';
 import { addActivity, getVideoActivities, getPoll } from '../../actions/socket'
 import videoData from '../../data'
 import ActivityGraph from '../activityGraph';
@@ -82,7 +83,6 @@ class Details extends Component {
     let details = videoData[this.props.id].details
     let viewers = this.props.viewers
     let currentUrl = window.location.pathname
-    let viewerCount = viewers[currentUrl] || 0
     let elem = []
     for(let key in emojis){
       if(emojis.hasOwnProperty(key)){
@@ -95,15 +95,12 @@ class Details extends Component {
     }
     return (
       <div class='details'>
+          <ViewCount />
           <Player playerReady={this.playerReady} onTimeUpdate={this.onTimeUpdate} />
           <div className={showEmoji ? "react react-open" : "react"} > {elem} </div>
           {selectedEmojis && selectedEmojis.length > 0 &&
             <Animator emojis={selectedEmojis} id={this.props.id} />
           }
-          {/* {viewerCount && <div className="viewer-count">
-            Currently Viewing: {viewerCount}
-          </div>
-          } */}
           <ActivityGraph duration={details.duration} handleChartClick = {this.handleChartClick} />
           <Poll/>
       </div>
@@ -117,8 +114,7 @@ const mapStateToProps = (state) => {
 
   return {
     id: id,
-    activities: state && state.activities && state.activities[id],
-    viewers: state.viewers || {}
+    activities: state && state.activities && state.activities[id]
   }
 }
 export default connect(mapStateToProps)(Details)

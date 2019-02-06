@@ -19,10 +19,10 @@ const onActivitiesReceived = (dispatch, data) => {
 
 
 const onViewersReceived = (dispatch, data) => {
-    // dispatch({
-    //     type: 'ON_VIEWERS_RECEIVED',
-    //     payload: data
-    // })
+    dispatch({
+        type: 'ON_VIEWERS_RECEIVED',
+        payload: data
+    })
 }
 
 const onPollDataReceived = (dispatch, data) => {
