@@ -69,7 +69,6 @@ export default class Player extends Component {
       type: 'data.type'
     }
 
-
     const stream = {
       "hls": {
         "url": "https://j2apps.s.llnwi.net/video/video/5103b29e25af9c4fa9166aff6336a210/2/hls/h264_baseline.m3u8",
@@ -90,7 +89,7 @@ export default class Player extends Component {
           mobile={true}
           history={update}
           akaMaiObj={akaMaiObj}
-          loadAkamaiSdk={true}
+          loadAkamaiSdk={false}
           onHeartbeat={() => {
               console.log("heartbeat")
           }}
