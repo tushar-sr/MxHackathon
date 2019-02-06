@@ -35,6 +35,7 @@ class Poll extends Component {
     options.map((option) =>{
       const {name, count, color, textColor} = option
       const percentage = count/total * 100
+      const roundPercent = Math.round(percentage)
       const style = {
         width: `${percentage}%`,
         backgroundColor: color,
@@ -42,8 +43,7 @@ class Poll extends Component {
       }
       elem.push(
         <div className='poll-elements' style={style} data-value={option.name} onClick={this.onOptionClick} >
-          {name}
-          <div className='poll-value-percent'>{`(${percentage}%)`}</div>
+          {`${name} (${roundPercent}%)`}
         </div>
       )
     })
