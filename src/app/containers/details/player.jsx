@@ -44,7 +44,7 @@ export default class Player extends Component {
     var schedule = []
    
     var options = {
-        poster: "https://s3.ap-south-1.amazonaws.com/mx-cms-content/pic/upload/test_pic1520363431069.jpg",
+        poster: "https://j2apps.s.llnwi.net/is1/media/images/63f30649ee84f960b08bed8225313795/16x9/9x/ceb3f38193c595cc5094c082c252b176.jpg",
         // url: "https://j2apps.s.llnwi.net/video/0726dc9967016117d1d8fbd57c241604/hls/h264_baseline.m3u8",
         url: "https://content.jwplatform.com/manifests/vM7nH0Kl.m3u8",
         autoplay: true,
