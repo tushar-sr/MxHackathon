@@ -72,11 +72,11 @@ export default class Player extends Component {
 
     const stream = {
       "hls": {
-        "url": "https://streaming.sonyliv.com/IndianIdol_ep50_winner_new.m3u8?__nn__=5606168722001&hdnea=1549357200_2be2c4d2cbb3c7e2093b02131d420721",
+        "url": "https://j2apps.s.llnwi.net/video/video/5103b29e25af9c4fa9166aff6336a210/2/hls/h264_baseline.m3u8",
         "hlsId": null
       },
       "dash": {
-        "url": "https://streaming.sonyliv.com/IndianIdol_ep50_winner_new.mpd?__nn__=5606168722001&hdnea=1549357200_b92ae4a011b6e3ce52afe9957cb0c7a2",
+        "url": "https://j2apps.s.llnwi.net/video/5103b29e25af9c4fa9166aff6336a210/2/dash/h264_baseline.mpd",
         "dashId": null
       }
     }
